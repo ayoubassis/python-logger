@@ -1,14 +1,28 @@
 name: Publish to PyPI
 on: [push]
 
+steps:
+  - name: Read package.json
+    id: package
+    uses: juliangruber/read-file-action@v1
+    with:
+      path: ./package.json
+  - name: Echo package.json
+    run: echo "${{ steps.package.outputs.content }}"
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Read python version
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./.python-version
+          
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: ./.python-version
+          python-version: ${{ steps.package.outputs.content }}
       - name: Install Poetry
         run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
       - name: Add Poetry to path
