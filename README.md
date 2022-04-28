@@ -1,2 +1,2 @@
 # python-logger
-A simple logger for Python scripts
+A simple yet fancy logger for Python scripts
