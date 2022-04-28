@@ -9,9 +9,6 @@ readme = "README.md"
 homepage = "https://github.com/blurry-mood/python-logger"
 repository = "https://github.com/blurry-mood/python-logger"
 
-packages = [
-    { include = "src" }
-]
 include = [
     "LICENSE"
 ]
