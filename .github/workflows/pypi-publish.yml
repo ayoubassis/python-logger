@@ -1,5 +1,8 @@
 name: Publish to PyPI
-on: [push]
+on:
+  push:
+    tags:
+      - v*.*.*
 
 jobs:
   test:
@@ -17,9 +20,11 @@ jobs:
         run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
       - name: Add Poetry to path
         run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
-#      - name: Run tests
-#        run: poetry run pytest
       - name: Install venv
-        run: poetry install  
+        run: poetry install
+      - name: Run tests
+        run: poetry run pytest
+      - name: Run linter
+        run: poetry run flake8
       - name: Publish package
         run: poetry publish --build -u __token__ -p ${{ secrets.PYPI_API_KEY }}
