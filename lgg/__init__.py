@@ -1,3 +1,3 @@
-from .logger import get_logger
+from ._logger import get_logger
 
-get_logger().info('Logger Imported')
+logger = get_logger()
