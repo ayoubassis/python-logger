@@ -1,12 +1,12 @@
-from lgg import get_logger
 
 
 def test_import():
+    from lgg import get_logger
     get_logger()
 
 
 def test_logging():
-    logger = get_logger()
+    from lgg import logger
 
     logger.info('This is an info message')
     logger.debug('Debugging message')
