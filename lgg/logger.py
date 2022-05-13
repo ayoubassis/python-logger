@@ -10,7 +10,7 @@ class MyHandler(StreamHandler):
 
 
 def get_logger():
-    logger = getLogger('active_learning')
+    logger = getLogger('nameless')
 
     cond = True
     for handler in logger.handlers:
