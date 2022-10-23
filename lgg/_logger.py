@@ -2,6 +2,7 @@
 
 """
 from logging import DEBUG, Formatter, StreamHandler, getLogger
+import sys
 
 __all__ = ['get_logger']
 
