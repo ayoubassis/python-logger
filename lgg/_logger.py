@@ -21,6 +21,7 @@ class MyHandler(StreamHandler):
 
     def __init__(self, ):
         super().__init__()
+        self.stream = sys.stdout
 
 
 def get_logger(name=DEFAULT_NAME):
