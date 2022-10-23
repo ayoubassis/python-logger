@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lgg"
-version = "0.2.1"
+version = "0.2.3"
 description = "A simple yet fancy logger for Python scripts"
 authors = ["Ayoub Assis <assis.ayoub@gmail.com>"]
 license = "MIT License"
@@ -17,11 +17,10 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
-flake9 = "^3.8.3"
 pylint = "^2.13.9"
 
 [build-system]

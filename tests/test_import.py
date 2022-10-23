@@ -1,12 +1,19 @@
+""" C
+"""
+
+from lgg import get_logger
+from lgg import logger
 
 
 def test_import():
-    from lgg import get_logger
+    """ C
+    """
     get_logger()
 
 
 def test_logging():
-    from lgg import logger
+    """ C
+    """
 
     logger.info('This is an info message')
     logger.debug('Debugging message')

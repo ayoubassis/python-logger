@@ -1,23 +1,33 @@
+""" C
+"""
+
+from lgg import get_logger
+from lgg import logger
+
+
 def test_anonymous():
-    from lgg import logger
+    """ C
+    """
     assert logger.name == 'nameless'
 
 
 def test_different_names():
-    from lgg import get_logger
+    """ C
+    """
     print()
-    l = list(range(1, 4))
-    loggers = [get_logger(f'logger{i}') for i in l]
+    list_range = list(range(1, 4))
+    loggers = [get_logger(f'logger{i}') for i in list_range]
 
-    for i, logger in zip(l, loggers):
-        assert logger.name == f'logger{i}'
-        logger.info(f'Hello from logger {i}')
+    for i, _logger in zip(list_range, loggers):
+        assert _logger.name == f'logger{i}'
+        _logger.info(f'Hello from logger {i}')
 
 
 def test_same_names():
-    from lgg import get_logger
+    """ C
+    """
     loggers = [get_logger('logger_name') for _ in range(2)]
 
-    for logger in loggers:
-        logger.info('Hello!')
-        logger.error('Bye!')
+    for _logger in loggers:
+        _logger.info('Hello!')
+        _logger.error('Bye!')

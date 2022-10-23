@@ -1,3 +1,6 @@
+""" A
+
+"""
 from logging import DEBUG, Formatter, StreamHandler, getLogger
 
 __all__ = ['get_logger']
@@ -18,12 +21,17 @@ _COLORS = {
 
 
 class MyHandler(StreamHandler):
+    """ B
+
+    """
 
     def __init__(self, ):
         super().__init__()
 
 
 def get_logger(name=DEFAULT_NAME):
+    """ C
+    """
     logger = getLogger(name)
 
     cond = True
@@ -40,10 +48,10 @@ def get_logger(name=DEFAULT_NAME):
         else:
             fmr = _ColoredFormatter('%(asctime)s - %(name)s '
                                     '- %(levelname)s:  %(message)s')
-        ch = MyHandler()
-        ch.setLevel(DEBUG)
-        ch.setFormatter(fmr)
-        logger.addHandler(ch)
+        handler = MyHandler()
+        handler.setLevel(DEBUG)
+        handler.setFormatter(fmr)
+        logger.addHandler(handler)
 
     return logger
 
