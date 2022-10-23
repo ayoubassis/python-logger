@@ -1,28 +1,36 @@
-name: Publish to PyPI
+name: Publish Python 🐍 distributions 📦 to PyPI
+
 on:
   push:
-    tags:
-      - v*.*.*
+    branch:
+      - release
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
+  build-n-publish:
+    name: Build and publish Python 🐍 distributions 📦 to PyPI
+    runs-on: ubuntu-20.04
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Read python version
-        uses: juliangruber/read-file-action@v1
+      - uses: actions/checkout@master
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
         with:
-          path: ./.python-version
-      - uses: actions/setup-python@v2
+          python-version: 3.7
+      - name: Install pypa/build
+        run: >-
+          python -m
+          pip install
+          build
+          --user
+      - name: Build a binary wheel and a source tarball
+        run: >-
+          python -m
+          build
+          --sdist
+          --wheel
+          --outdir dist/
+
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@master
         with:
-          python-version: ${{ steps.package.outputs.content }}
-      - name: Install Poetry
-        run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-      - name: Add Poetry to path
-        run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
-      - name: Install venv
-        run: poetry install
-      - name: Run tests
-        run: poetry run pytest
-      - name: Publish package
-        run: poetry publish --build -u __token__ -p ${{ secrets.PYPI_API_KEY }}
+          password: ${{ secrets.PYPI_API_KEY }}
