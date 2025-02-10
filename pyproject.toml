@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lgg"
-version = "0.3.0"
+version = "0.4.0"
 description = "A simple yet fancy logger for Python scripts"
 authors = ["Ayoub Assis <assis.ayoub@gmail.com>"]
 license = "MIT License"
