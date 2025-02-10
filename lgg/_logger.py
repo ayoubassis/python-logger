@@ -85,3 +85,14 @@ def get_logger(name=DEFAULT_NAME, filename=None, use_color=True):
         logger.addHandler(handler)
 
     return logger
+
+def enable_colors(name=DEFAULT_NAME, use_color=True):
+    """Disable colors for the logger.
+
+    Args:
+        name (str, optional): The name of the logger. Defaults to DEFAULT_NAME.
+    """
+    logger = getLogger(name)
+    for handler in logger.handlers:
+        if isinstance(handler, MyHandler):
+            handler.formatter.use_color = use_color
